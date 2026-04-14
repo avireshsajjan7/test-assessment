@@ -1,0 +1,18 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform directories
+.terraform/
+
+# Lock file can be committed if desired, but ignore if you want local-only
+.terraform.lock.hcl
+
+# Sensitive variable values
+terraform.tfvars
+*.tfvars
+
+# Local IDE / OS files
+*.log
+*.swp
+.DS_Store
