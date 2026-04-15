@@ -72,4 +72,14 @@ module "rds" {
   db_secret_arn = module.secrets.db_secret_arn
   subnet_ids    = module.vpc.subnet_ids
   vpc_id        = module.vpc.vpc_id
+
+  depends_on = [module.secrets]
+}
+
+module "iam" {
+  source      = "./modules/iam"
+  environment = var.environment
+  owner       = var.owner
+  cost_center = var.cost_center
+  project     = var.project
 }

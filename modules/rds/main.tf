@@ -55,7 +55,7 @@ resource "aws_db_instance" "this" {
   db_subnet_group_name   = aws_db_subnet_group.this.name
   vpc_security_group_ids = [aws_security_group.rds.id]
   multi_az               = true
-  backup_retention_period = 7
+  backup_retention_period = 1
   skip_final_snapshot    = true
 
   tags = {

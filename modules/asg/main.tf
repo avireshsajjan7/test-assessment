@@ -1,7 +1,22 @@
+data "aws_ami" "amazon_linux_2" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
 resource "aws_launch_template" "this" {
   name_prefix   = "${var.owner}-${var.project}-${var.environment}-lt"
-  image_id      = "ami-0c55b159cbfafe1d0"  # Amazon Linux 2
-  instance_type = "t2.micro"
+  image_id      = data.aws_ami.amazon_linux_2.id
+  instance_type = "t3.micro"
 
   tags = {
     Environment = var.environment
